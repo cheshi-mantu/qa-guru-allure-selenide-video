@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
+import static helpers.AttachmentsHelper.*;
 import static helpers.Environment.selenoid_url;
 
 public class TestBase {
@@ -29,16 +30,22 @@ public class TestBase {
 //        capabilities.setCapability("EnableVNC", true);
 //        capabilities.setCapability("EnableVideo", true);
 //        Configuration.browserCapabilities = capabilities;
+
+//  =======================================================================================================
+//         commenting next three lines will allow to run locally
         if (selenoid_url == "null") {
             System.setProperty("selenoid_url", FileReadHelper.getStringFromFile("selenoid_url.secret"));
         }
-
+//  =======================================================================================================
         Configuration.browser = CustomWebDriver.class.getName();
     }
 
     @AfterEach
-    public void closeBrowser() {
-
+    public void afterEach() {
+        attachVideo();
+        attachScreenshot("Last screenshot");
+        attachPageSource();
+        attachBrowserConsoleLogs();
         closeWebDriver();
     }
 }
