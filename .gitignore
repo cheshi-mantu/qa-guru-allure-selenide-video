@@ -35,3 +35,4 @@ target/
 .vscode
 .allure/
 gradle-wrapper.jar
+gradlew.bat
