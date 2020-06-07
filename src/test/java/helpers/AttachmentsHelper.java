@@ -49,7 +49,7 @@ public class AttachmentsHelper {
 
     public static String getVideoUrl() {
         try {
-            return new URL("http://" + System.getProperty("selenoid_url") + ":8080/video/" + getSessionId() + ".mp4") + "";
+            return new URL(System.getProperty("selenoid_url") + ":8080/video/" + getSessionId() + ".mp4") + "";
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
