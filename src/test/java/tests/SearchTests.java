@@ -23,7 +23,7 @@ class SearchTests extends TestBase {
     @Description("Open page, search for string, try to match")
     @DisplayName("Successful search test")
     void successfulSearch() {
-        step("Open search page by URL " +urlstring , ()-> open(urlstring));
+        step("Open search page by URL " + urlstring , ()-> open(urlstring));
         step("Enter search test " + searchstring, ()->{
             $(byName("q")).val(searchstring).pressEnter();
         });
