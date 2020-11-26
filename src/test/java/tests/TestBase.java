@@ -15,25 +15,11 @@ import static helpers.AttachmentsHelper.*;
 import static helpers.Environment.selenoid_url;
 
 public class TestBase {
-    @BeforeAll
-    public static void setUp() {
-        System.out.println("Yeee-haaaaa. Sorry for dumb message, this is just a stub for now");
-//        Configuration.browser = "opera";
-//        Configuration.startMaximized = true;
-    }
-
     @BeforeEach
     void beforeEachTest() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        all the stuff be low is sent to CustomWebDriver
-//        capabilities.setCapability("EnableVNC", true);
-//        capabilities.setCapability("EnableVideo", true);
-//        Configuration.browserCapabilities = capabilities;
-
-//  =======================================================================================================
 //         commenting next three lines will allow to run locally
-        if (selenoid_url == "null") {
+        if (selenoid_url == null) {
             System.setProperty("selenoid_url", FileReadHelper.getStringFromFile("selenoid_url.secret"));
         }
 //  =======================================================================================================
